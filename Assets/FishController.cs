@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class FishController : MonoBehaviour
@@ -26,6 +27,7 @@ public class FishController : MonoBehaviour
         //if the user presses down the space key, run the spawnBait function.
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Spacebar has been pressed");
             SpawnBait();
         }
     }

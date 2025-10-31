@@ -22,7 +22,7 @@ public class BallBait : MonoBehaviour
                 Destroy(otherObject.gameObject);
 
                 //That is essentially earning 1 point that will get added to the total score
-                totalScore.instance.AddToScore(1);
+                // totalScore.instance.AddToScore(1);
 
                 Destroy(gameObject);
             }

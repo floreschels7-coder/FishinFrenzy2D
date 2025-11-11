@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
-using System.Threading.Tasks.Dataflow;
 using UnityEngine;
 
 public class FishMovement : MonoBehaviour
@@ -37,10 +32,10 @@ public class FishMovement : MonoBehaviour
         //Fish will move left or right based on its direction
         //Time.deltaTime makes movement smooth in an animation
         //the multiplication is: base direction * how fast the fish * 1 or -1 direction * uniform and smooth speed 
-        transform.postion += Vector3.right * swimSpeed * direction * TimeOnly.deltaTime;
+        transform.position += Vector3.right * swimSpeed * direction * Time.deltaTime;
 
         //Check the current distance that the fish has swam and this will help determine if the fish is out of bounds
-        float distanceFromStart = transform.position.x - startPoint.X;
+        float distanceFromStart = transform.position.x - startPoint.x;
 
         //Check distance point: If the fish swam too far right(1), flip to go left(-1)
         if (distanceFromStart > swimDistance)

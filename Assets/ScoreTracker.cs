@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro; //textMeshPro text
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class ScoreTracker : MonoBehaviour
 
     //VARIABLE 2:This is the text that will be connected to the text that is shown on the screen. 
     //which is the score. 
-    public Text scoreText;
+    public TMP_Text scoreText;
 
     //VARIABLE 3: this number will be the actual current score
     private int score = 0;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BallBait : MonoBehaviour
@@ -18,12 +19,14 @@ public class BallBait : MonoBehaviour
         //if this 'otherObject' falls into the "Fish" category then...
         if (otherObject.CompareTag("Fish"))
             {
-                //destory this 'otherObject'
-                Destroy(otherObject.gameObject);
+            //destory this 'otherObject' (the fish)
+            Destroy(otherObject.gameObject);
 
                 //That is essentially earning 1 point that will get added to the total score
-                // totalScore.instance.AddToScore(1);
+                //calls ScoreTracker class instance variable adds points to the score
+                ScoreTracker.instance.AddScore(1);
 
+                //Destory the bait. 
                 Destroy(gameObject);
             }
     }

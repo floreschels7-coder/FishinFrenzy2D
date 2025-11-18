@@ -23,7 +23,7 @@ public class BallBait : MonoBehaviour
             Destroy(otherObject.gameObject);
 
                 //That is essentially earning 1 point that will get added to the total score
-                //calls ScoreTracker class instance variable adds points to the score
+                //calls ScoreTracker class instance variable adds points. 
                 ScoreTracker.instance.AddScore(1);
 
                 //Destory the bait. 

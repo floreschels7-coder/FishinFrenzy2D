@@ -8,6 +8,8 @@ public class BallBait : MonoBehaviour
 
     //5 secs before the ball disappears.
     public float timeOfBall = 5;
+
+   
     void Start()
     {
         //this should destroy the circle/ball once it reaches 5 secs.
@@ -19,12 +21,16 @@ public class BallBait : MonoBehaviour
         //if this 'otherObject' falls into the "Fish" category then...
         if (otherObject.CompareTag("Fish"))
             {
-            //destory this 'otherObject' (the fish)
-            Destroy(otherObject.gameObject);
+                //destory this 'otherObject' (the fish)
+                Destroy(otherObject.gameObject);
 
                 //That is essentially earning 1 point that will get added to the total score
                 //calls ScoreTracker class instance variable adds points. 
                 ScoreTracker.instance.AddScore(1);
+
+                //Find the GameManager object and get its GameOver script
+                //Then tell it a fish was caught
+                GameObject.Find("GameManager").GetComponent<GameOver>().FishisCaught();
 
                 //Destory the bait. 
                 Destroy(gameObject);

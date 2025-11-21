@@ -22,10 +22,6 @@ public class PauseManager : MonoBehaviour
     //function is called when player clicks pause or resume button
     public void PauseOrResume()
     {
-        //the ! (not) flips the value
-        //if isPaused was false, it becomes true
-        //if isPaused was true, it is then false
-        isPaused = !isPaused;
 
         //First check: after the flip, are we paused or not?
         if (isPaused)

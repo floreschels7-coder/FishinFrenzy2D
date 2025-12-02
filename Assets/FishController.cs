@@ -11,8 +11,26 @@ public class FishController : MonoBehaviour
     //Variable2: pink bait ball should be in the point of the fishing pole
     public Transform spawnPoint;
 
-    //Variable3: the speed of the ball falling down is 4.
-    public float speedOfBall = 4;
+    //Variable3: the speed of how fast the rod goes up/down
+    //before I used to have a float for the speed of the ball only but 
+    //but now I am trying to control the rod instead of the ball
+    public float speedOfRod = 3f;
+
+    //Variable4: the distance of how far down the rod goes
+    public float maxDepth = 8f; 
+
+
+
+    //to move the bait ball and be able to destroy it later
+    //currentBait keeps track of the curr bait ball that is in the water
+    private GameObject currentBait;
+
+    //isFishing is a boolean because it tracks whether the user is currently 
+    //fishing, this keeps the user from spawning multiple baits at a time. 
+    private bool isFishing = false; 
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +42,29 @@ public class FishController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if the user presses down the space key, run the spawnBait function.
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Checks two conditions:
+        //if the user has pressed the spacebar and
+        //if that user is not already fishing
+        if (Input.GetKeyDown(KeyCode.Space) && !isFishing)
         {
-            SpawnBait();
+            //using a coroutine lets actions spread across multiple frames in the game
+            //which begins the fishing process
+            StartCorutine(FishingCycle());
+        }
+    }
+
+
+    //IEnumerator helps the coroutine make the rod go down and up
+    IEnumerator FishingCycle()
+    {
+        //keeps the user from spawning multiple baits while fishing
+        isFishing = true;
+
+
+        //Now to spawn the bait, the location of the spawn and prefab need to be checked
+        if (pinkBaitPrefab != null && spawnPoint != null)
+        {
+            
         }
     }
 

@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f1489cc537e48a9bf1b3a52c4dd0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimSpeed: 7
+  swimSpeed: 10
   swimDistance: 5
 --- !u!212 &511196132
 SpriteRenderer:
@@ -5426,7 +5426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinkBaitPrefab: {fileID: 691609725831701668, guid: b0000ef08bb4f446f964bba57e885995, type: 3}
   spawnPoint: {fileID: 481670923}
-  speedOfBall: 4
+  speedOfRod: 3
+  maxDepth: 8
 --- !u!1 &1569013798
 GameObject:
   m_ObjectHideFlags: 0

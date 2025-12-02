@@ -12,9 +12,9 @@ public class BallBait : MonoBehaviour
    
     void Start()
     {
-        //this should destroy the circle/ball once it reaches 5 secs.
-        Destroy(gameObject, timeOfBall);
-            }
+        // //this should destroy the circle/ball once it reaches 5 secs.
+        // Destroy(gameObject, timeOfBall);
+    }
 
     void OnTriggerEnter2D(Collider2D otherObject)
     {

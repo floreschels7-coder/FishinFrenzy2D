@@ -6,8 +6,9 @@ using UnityEngine;
 public class BallBait : MonoBehaviour
 {
 
-    //5 secs before the ball disappears.
-    public float timeOfBall = 5;
+   public List<GameObject> fish = new ();
+
+   public FishController controller;
 
    
     void Start()
@@ -21,8 +22,9 @@ public class BallBait : MonoBehaviour
         //if this 'otherObject' falls into the "Fish" category then...
         if (otherObject.CompareTag("Fish"))
             {
-                //destory this 'otherObject' (the fish)
-                Destroy(otherObject.gameObject);
+                fish.Add(otherObject.gameObject);
+
+                otherObject.gameObject.transform.parent = this.transform;
 
                 //That is essentially earning 1 point that will get added to the total score
                 //calls ScoreTracker class instance variable adds points. 
@@ -31,9 +33,11 @@ public class BallBait : MonoBehaviour
                 //Find the GameManager object and get its GameOver script
                 //Then tell it a fish was caught
                 GameObject.Find("GameManager").GetComponent<GameOver>().FishisCaught();
-
-                //Destory the bait. 
-                Destroy(gameObject);
             }
+    }
+
+    public void setFishing(bool isFishing)
+    {
+        controller.isFishing = isFishing; 
     }
 }

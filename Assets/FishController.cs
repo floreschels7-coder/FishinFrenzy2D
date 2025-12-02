@@ -107,25 +107,36 @@ public class FishController : MonoBehaviour
         // onces it reaches the bottom wait a little bit (0.3 seconds) before coming back up
         yield return new WaitForSeconds(0.3f);
 
-        //Move the bait back up only if the bait still exists 
-        if (currentBait != null)
-        {
-            //move up until the tip of the rod has been met again so
-            //while the bait is not null AND the bait's y position (vertical)
-            //  is less than the spawnPoint's y position
-            while (currentBait != null && currentBait.transform.position.y < spawnPoint.position.y)
-            {
-                //move bait up using Vector3.up (upward direction) (0,1,0)
-                currentBait.transform.position += Vector3.up * speedOfRod * Time.deltaTime;
 
-                //wait one frame then continue
-                yield return null;
-            }
+
+
+        // //Move the bait back up only if the bait still exists 
+        // if (currentBait != null)
+        // {
+        //     //move up until the tip of the rod has been met again so
+        //     //while the bait is not null AND the bait's y position (vertical)
+        //     //  is less than the spawnPoint's y position
+        //     while (currentBait != null && currentBait.transform.position.y < spawnPoint.position.y)
+        //     {
+        //         //move bait up using Vector3.up (upward direction) (0,1,0)
+        //         currentBait.transform.position += Vector3.up * speedOfRod * Time.deltaTime;
+
+        //         //wait one frame then continue
+        //         yield return null;
+        //     }
         
-        }
+        // }
+        // //onces it reaches the bottom wait 0.2 seconds
+        // yield return new WaitForSeconds(0.2f);
+
+
+
+
+
 
         //check if the bait still exists 
-        //it could have been destroyed when it caught a fish but if it does still exist
+        //it could have been destroyed when it caught a fish (if so, then it does nothing)
+        // but if it does still exist
         //destroy it
         if (currentBait != null)
         {

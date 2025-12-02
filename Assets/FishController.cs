@@ -49,7 +49,8 @@ public class FishController : MonoBehaviour
         {
             //using a coroutine lets actions spread across multiple frames in the game
             //which begins the fishing process
-            StartCorutine(FishingCycle());
+            //BUG: StartCoroutine was spelled wrong
+            StartCoroutine(FishingCycle());
         }
     }
 
@@ -64,26 +65,78 @@ public class FishController : MonoBehaviour
         //Now to spawn the bait, the location of the spawn and prefab need to be checked
         if (pinkBaitPrefab != null && spawnPoint != null)
         {
-            
+            //Needs to create a copy of the bait that'll show
+            // on the screen using Instantiate
+            currentBait = Instantiate(pinkBaitPrefab, spawnPoint.position, spawnPoint.rotation);
+
+            //get the physics Rigidbody2D from the bait that gets stored in rb
+            //to control the gravity aspect of what was just spawned
+            Rigidbody2D rb = currentBait.GetComponent<Rigidbody2D>();
+
+            //turn off gravity so it doesn't move on its own
+            rb.gravityScale = 0;
+
+            //Velocity should be zero to stop any movement
+            //BUG: velocity was capitalized when it shouldn't have been
+            rb.velocity = Vector2.zero;
         }
-    }
+    
 
+    
 
-    void SpawnBait()
-    {   
-        //Do we have the prefab and location, if yes, continue
-        if (pinkBaitPrefab != null && spawnPoint != null)
+        //to move the bait down slowly, we have to track how far its moved down
+        float distanceTraveled = 0;
+
+        //while distanceTraveled is less than maxDepth AND if the currentBait still exits
+        //then keep moving down until maxDepth is met or the ball is destroyed (caught a fish)
+        while (distanceTraveled < maxDepth && currentBait != null)
         {
-            //Variable 'bait' will be the place where all the copies of the ball get stored. (what,where,how) parameters.
-            GameObject bait = Instantiate(pinkBaitPrefab, spawnPoint.position, spawnPoint.rotation);
+            //Vector3.down is downward direction (0,-1,0)
+            //rodSpeed controls how fast its going down
+            //Time.deltaTime make it a smooth transition (not choppy and same speed on all screens)
+            currentBait.transform.position += Vector3.down * speedOfRod * Time.deltaTime;
 
+            //add to distanceTraveled tracker
+            distanceTraveled += speedOfRod * Time.deltaTime;
 
-            //The physics of the ball that comes from Rigidbody2D essentially gets stored in rb
-            Rigidbody2D rb = bait.GetComponent<Rigidbody2D>();
-            
-            //V = S * D --> vector direction is downward and the speed is 4;
-            rb.velocity = Vector2.down * speedOfBall;
-            
+            //yield return null allows there to be a "pause", waits one frame before continuting again
+            yield return null;
         }
+
+    
+        // onces it reaches the bottom wait a little bit (0.3 seconds) before coming back up
+        yield return new WaitForSeconds(0.3f);
+
+        //Move the bait back up only if the bait still exists 
+        if (currentBait != null)
+        {
+            //move up until the tip of the rod has been met again so
+            //while the bait is not null AND the bait's y position (vertical)
+            //  is less than the spawnPoint's y position
+            while (currentBait != null && currentBait.transform.position.y < spawnPoint.position.y)
+            {
+                //move bait up using Vector3.up (upward direction) (0,1,0)
+                currentBait.transform.position += Vector3.up * speedOfRod * Time.deltaTime;
+
+                //wait one frame then continue
+                yield return null;
+            }
+        
+        }
+
+        //check if the bait still exists 
+        //it could have been destroyed when it caught a fish but if it does still exist
+        //destroy it
+        if (currentBait != null)
+        {
+            Destroy(currentBait);
+        }
+
+        //set isFishing back to false so user can play again
+        isFishing = false;
+
+        //BUG: the bracket brace that closes the fishingcycle function was not there 
+        //so I had to fix it. 
     }
+
 }

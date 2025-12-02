@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f1489cc537e48a9bf1b3a52c4dd0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimSpeed: 17
+  swimSpeed: 20
   swimDistance: 6
 --- !u!212 &511196132
 SpriteRenderer:
@@ -4739,7 +4739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 2
-  swimDistance: 5
+  swimDistance: 6
 --- !u!61 &1296158684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5757,7 +5757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 2
-  swimDistance: 4
+  swimDistance: 6
 --- !u!212 &1681031172
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1861,8 +1861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f1489cc537e48a9bf1b3a52c4dd0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimSpeed: 10
-  swimDistance: 5
+  swimSpeed: 17
+  swimDistance: 6
 --- !u!212 &511196132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5756,8 +5756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f1489cc537e48a9bf1b3a52c4dd0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimSpeed: 3
-  swimDistance: 3
+  swimSpeed: 2
+  swimDistance: 4
 --- !u!212 &1681031172
 SpriteRenderer:
   m_ObjectHideFlags: 0

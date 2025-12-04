@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//child of Fish class
-public class NormalFish : MonoBehaviour
+//child of parent class Fish
+public class FastFish : MonoBehaviour
 {
-    //movement of fish
+
+    //faster swim than normal fish
+    public float fasterSpeed = 1.5f;
+    
     public override void Move()
     {
-        //Fish will move left or right based on its direction
-        //Time.deltaTime makes movement smooth in an animation
-        //the multiplication is: base direction * how fast the fish * 1 or -1 direction * uniform and smooth speed 
-        transform.position += Vector3.right * swimSpeed * direction * Time.deltaTime;
+        //if swim speed is 2 and the faster speed is 1.5 then 
+        //multiply them both to set the speed to 3
+        transform.position += Vector3.right * (swimSpeed*fasterSpeed)*direction*Time.deltaTime;
 
         //Check the current distance that the fish has swam and this will help determine if the fish is out of bounds
         float distanceFromStart = transform.position.x - startPoint.x;
@@ -28,5 +30,4 @@ public class NormalFish : MonoBehaviour
             FlipFish(); //flips fish
         }
     }
-
 }

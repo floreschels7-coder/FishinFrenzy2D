@@ -12,9 +12,9 @@ public abstract class Fish : MonoBehaviour
     //scoreValue is for the amt of points the fish is worth
     public int scoreValue = 10;
     //startPoint for where the fish began
-    private Vector3 startPoint;
+    public Vector3 startPoint;
     //1 for right direction and -1 for left direction
-    private int direction = 1; 
+    public int direction = 1; 
 
 
     // Start is called before the first frame update

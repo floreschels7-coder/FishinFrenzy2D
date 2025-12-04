@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //child of Fish class
-public class NormalFish : MonoBehaviour
+public class NormalFish : Fish
 {
     //movement of fish
     public override void Move()

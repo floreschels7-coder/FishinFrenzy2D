@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //child of parent class Fish
-public class FastFish : MonoBehaviour
+public class FastFish : Fish
 {
 
     //faster swim than normal fish

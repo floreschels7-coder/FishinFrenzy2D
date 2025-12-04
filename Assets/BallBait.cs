@@ -7,7 +7,6 @@ public class BallBait : MonoBehaviour
 {
 
    public List<GameObject> fish = new List<GameObject>();
-
    public FishController controller;
 
 
@@ -17,32 +16,41 @@ public class BallBait : MonoBehaviour
         //if this 'otherObject' falls into the "Fish" category then...
         if (otherObject.CompareTag("Fish"))
         {
+            //check if we already caught this fish
             if (fish.Contains(otherObject.gameObject))
             {
-                return;
+                return; //return if fish is already caught
             }
+
+            //Add this fish to the caught fish catergory
             fish.Add(otherObject.gameObject);
 
+            //make the fish stick to pink ball 
             otherObject.gameObject.transform.parent = this.transform;
 
-            FishMovement fishMovement = otherObject.GetComponent<FishMovement>();
-            if(fishMovement != null)
+            //grabs the Fish script for the Fast and Normal fish
+            Fish fishScript = otherObject.GetComponent<Fish>();
+
+            if(fishScript != null)
             {
-                fishMovement.enabled = false;
+                //disable fish's movement script to make it quit swimming
+                fishScript.enabled = false;
+
+                //get score from the fish and add
+                //Fast fish are 20 and normal fish are 10
+                ScoreTracker.instance.AddScore(fishScript.scoreValue);
             }
 
+            //fish's collider component
             Collider2D fishCollider = otherObject.GetComponent<Collider2D>();
             if(fishCollider != null)
             {
-                fishCollider.enabled = false;
+                //disable collider so fish isn't caught again twice.
+                fishCollider.enabled = false; 
             }
 
-            //That is essentially earning 1 point that will get added to the total score
-            //calls ScoreTracker class instance variable adds points. 
-            ScoreTracker.instance.AddScore(1);
-
             //Find the GameManager object and get its GameOver script
-            //Then tell it a fish was caught
+            //Then tell it a fish was caught (to check if game shoudl end)
             GameObject.Find("GameManager").GetComponent<GameOver>().FishisCaught();
         }
     }

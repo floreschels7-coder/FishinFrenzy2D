@@ -3,7 +3,7 @@ using UnityEngine;
 public class FishMovement : MonoBehaviour
 {
 
-    //FIRST THE VARIABLES ARE CREATED
+   
     //Variable 1: What should the speed of the fish be? 
     //floats to create smooth speeds and not choppy
     public float swimSpeed = 2f;

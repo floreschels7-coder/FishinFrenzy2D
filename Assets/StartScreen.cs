@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour
 {
@@ -9,6 +10,6 @@ public class StartScreen : MonoBehaviour
     public void StartGame()
     {
         //loads main game scene index 1
-        SceneMangaer.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 }

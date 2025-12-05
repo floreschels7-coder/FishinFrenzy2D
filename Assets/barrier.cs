@@ -18,7 +18,7 @@ public class barrier : MonoBehaviour
 
         void OnTriggerEnter2D(Collider2D otherObject)
     {
-        //if this 'otherObject' falls into the "Fish" category then...
+        //if this 'otherObject' falls into the "Bait" category then...
         if (otherObject.CompareTag("Bait"))
             {
                 BallBait bait = otherObject.gameObject.GetComponent<BallBait>();

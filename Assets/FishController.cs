@@ -44,8 +44,6 @@ public class FishController : MonoBehaviour
         //keeps the user from spawning multiple baits while fishing
         isFishing = true;
      
-
-
         //get the physics Rigidbody2D from the bait that gets stored in rb
         Rigidbody2D rb = pinkBait.GetComponent<Rigidbody2D>();
 
@@ -69,6 +67,23 @@ public class FishController : MonoBehaviour
 
         //stop ball when it reaches the top
         rb.velocity = Vector2.zero;
+
+        //grabs BallBait script that goes with the pink object
+        BallBait bb = pinkBait.GetComponent<BallBait>();
+        //accessed the script and were any fish caught?
+        if(bb != null && bb.fish.Count > 0)
+        {
+            //loop through each fish caught and destroy it
+            for(int i = 0; i < bb.fish.Count; i++)
+            {
+                //fish at position i
+                GameObject caughtFish = bb.fish[i];
+                //destroy
+                Destroy(caughtFish);
+            }
+            //clear list to catch new fish
+            bb.fish.Clear();
+        }
 
         //Reset the ball position exactly at spawn point position
         pinkBait.transform.position = spawnPoint.position;

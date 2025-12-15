@@ -24,7 +24,8 @@ public class ScoreTracker : MonoBehaviour
         //'this' is the ScoreTracker that can be 
         // accessed and called referring to the ScoreTracker instance
         instance = this;
-
+        //reset score when game starts
+        score = 0;
         //show the score
         UpdateScoreText();
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; 
+using TMPro;
 
 public class GameOver : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GameOver : MonoBehaviour
     public Timer timerScript;
 
     //VARIABLE 3: win or lose text on game over screen
-    public Text gameOverText;
+    public TMP_Text gameOverText;
 
     //VARIABLE 4: what score to win game?
     public int winScore = 100; 
@@ -48,7 +49,7 @@ public class GameOver : MonoBehaviour
     public void TimeIsUp()
     {
         //player ran out of time, then they lost
-        ShowGameOver("Time is Up. You Lost!");
+        ShowGameOver("You Lost!");
     }
 
 

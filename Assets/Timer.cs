@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
 
     //amt of time given to players
-    public float time = 20f; 
+    public float time = 15f; 
 
     //shows timer on screen
     public Text timerText;

@@ -14,7 +14,7 @@ public class ScoreTracker : MonoBehaviour
     public TMP_Text scoreText;
 
     //VARIABLE 3: this number will be the actual current score
-    private int score = 0;
+    public int score = 0;
 
 
 

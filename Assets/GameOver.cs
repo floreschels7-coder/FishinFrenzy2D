@@ -35,7 +35,7 @@ public class GameOver : MonoBehaviour
     public void FishisCaught()
     {
         //has player reached score 100?
-        if (ScoreTracker.instance.score >= winScore)
+        if (ScoreTracker.score >= winScore)
         {
             //100 pts met, then they won and timer stops
             timerScript.timerStopped();

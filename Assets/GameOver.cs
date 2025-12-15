@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; 
 
 public class GameOver : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class GameOver : MonoBehaviour
     //VARIABLE 1: references the GameOverScreen panel made in the hierarchy
     public GameObject gameOverPanel;
 
-    //VARIABLE 2:  how many fish need to be caught to end the game?
-    public int totalFishCount = 5;
+    //VARIABLE 2: timer script reference so it can stop when user wins
+    public Timer timerScript;
 
-    //VARIABLE 3: Need to determine and track how many fish have been 
-    //caught so far. It will start at 0.
-    private int fishCaught = 0; 
+    //VARIABLE 3: win or lose text on game over screen
+    public Text gameOverText;
+
+    //VARIABLE 4: what score to win game?
+    public int winScore = 100; 
 
 
 
@@ -31,21 +34,30 @@ public class GameOver : MonoBehaviour
     //this function is called when a fish is caught
     public void FishisCaught()
     {
-        //Add 1 to the fish counter each time a fish is caught. 
-        fishCaught++;
-        
-        //Check if all the fish have been caught
-        if (fishCaught >= totalFishCount)
+        //has player reached score 100?
+        if (ScoreTracker.instance.score >= winScore)
         {
-            //then all fish are caught so show game over screen. 
-            ShowGameOver();
+            //100 pts met, then they won and timer stops
+            timerScript.timerStopped();
+            //game over screen shows 
+            ShowGameOver("You Won!");
         }
+    }
+
+    //function called by Timer when time is up
+    public void TimeIsUp()
+    {
+        //player ran out of time, then they lost
+        ShowGameOver("Time is Up. You Lost!");
     }
 
 
     //shows the game over screen and stops the game. 
-    private void ShowGameOver()
+    //string parameter to show different sentences
+    private void ShowGameOver(string message)
     {
+        //text shows if they won/lost
+        gameOverText.text = message;
         //show the GameOver screen by setting SetActive(true)
         gameOverPanel.SetActive(true);
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Timer : MonoBehaviour
             {
                 //subtract time and time.deltatime is the
                 //  amt of time passed since the last frame
-                time -= Timer.deltaTime;
+                time -= Time.deltaTime;
 
                 //update text on screen 
                 //Mathf rounds to nearest whole number
